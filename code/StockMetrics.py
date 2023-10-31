@@ -13,47 +13,32 @@ class StockMetrics(StockData):
         # list of lists
         self.load()
 
-     def average01(self):
-         averages = []
+    def average01(self):
+        """pt1
+        """
+        averages = []
         for row in self.data:
-             valid_price = []
-        for price in row:
-            if price_str.strip()
-             price = float(price_str)
-            valid_prices.append(price)
-             if valid_prices:
-                 average = sum(valid_price) / len(valid_price)
-                 average = round(average, 3)
-                averages.append(average)  
+            new_row = [float(val) for val in row[1:] if val != "" and val != " "]
+            avg = stats.mean(new_row)
+            averages.append(round(avg, 3))
         return averages
 
     def median02(self):
+        """pt2
+        """
         medians = []
-        for row in self.data
-            row_value = []
-        for value in row :
-             if value_str.strip()
-             numeric_value = float(value)
-             row_value.append(value)
-            if row_value:
-            row_median = statistics.median(row_value)
-             medians.append(median)
+        for row in self.data:
+            new_row = [float(val) for val in row[1:] if val != "" and val != " "]
+            new_value = stats.median(new_row)
+            medians.append(new_value)
         return medians
-             
+
     def stddev03(self):
-        stddevs = []
-        for row in self.data
-            row_value = []
-        for value in row :
-             if value_str.strip()
-             numeric_value = float(value)
-             row_value.append(value)
-        if row_value:
-            row_stddev = round(statistics.stddev(row_value),3)
-            stddevs.append(stddev)
-        return stddevs
-             
-        
-       
-    
-        ...
+        """pt3
+        """
+        stdevs = []
+        for row in self.data:
+            new_row = [float(val) for val in row[1:] if val != "" and val != " "]
+            value_price = stats.stdev(new_row)
+            stdevs.append(round(value_price, 3))
+        return stdevs
